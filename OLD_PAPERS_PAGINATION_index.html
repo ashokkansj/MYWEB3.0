@@ -1,0 +1,682 @@
+<!doctype html>
+<html lang="en"> 
+ <head> 
+  <meta charset="UTF-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <title>Website with Left Logo &amp; Social Icons</title> 
+  <style>
+        /* Full Screen Body */
+        
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+    background: #f4f4f4;
+    text-align: center;
+    overflow-y: auto; /* Added to enable scrolling */
+}
+
+
+        /* Overlay for Clicking Outside */
+        .menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+            z-index: 998;
+        }
+
+        /* Website Logo (Left Top Corner) */
+        .logo-container {
+            position: absolute;
+            top: 10px;
+            left: 15px;
+        }
+
+        
+.website-logo {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid #000;
+    animation: spin 5s linear infinite; /* Continuous spinning animation */
+    transform-style: preserve-3d;        /* 3D effect */
+}
+
+@keyframes spin {
+    from {
+        transform: rotateY(0deg);       /* Start position */
+    }
+    to {
+        transform: rotateY(360deg);     /* Full 360-degree rotation */
+    }
+}
+
+
+        /* Menu Button (Right Side) */
+        
+.menu-button {
+    position: fixed; /* Changed from absolute to fixed */
+    top: 15px;
+    right: 15px;
+    width: 40px;
+    height: 40px;
+    background: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 1000; /* Ensuring it's above the menu */
+}
+
+
+        .bar {
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            margin: 4px 0;
+            transition: 0.3s;
+        }
+
+        /* Change Menu Button to X */
+        
+
+
+.menu-button.active .bar:nth-child(1) {
+    transform: rotate(45deg); /* Simple rotation for symmetry */
+    position: absolute; /* To overlap the bars perfectly */
+    transition: transform 0.3s ease; /* Smooth transition */
+}
+
+.menu-button.active .bar:nth-child(2) {
+    opacity: 0; /* Hide the middle bar */
+    transition: opacity 0.3s ease; /* Smooth fade-out */
+}
+
+.menu-button.active .bar:nth-child(3) {
+    transform: rotate(-45deg); /* Simple rotation for symmetry */
+    position: absolute; /* To overlap the bars perfectly */
+    transition: transform 0.3s ease; /* Smooth transition */
+}
+
+
+
+
+        /* Sidebar Menu (Right Side) */
+        
+.menu {
+    position: fixed;
+    top: 0;
+    right: -250px;
+    width: 250px;
+    height: 90vh;            /* Reduced height from the bottom */
+    background: white;
+    transition: right 0.3s ease-in-out;
+    padding-top: 50px;
+    box-shadow: -5px 0 10px rgba(0, 0, 0, 0.2);
+    z-index: 999;
+    text-align: left;
+    overflow-y: auto;         /* Enable scrolling if needed */
+}
+
+
+        .menu.active {
+            right: 0;
+        }
+
+        .menu ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .menu ul li {
+            padding: 15px;
+            font-size: 18px;
+            border-bottom: 1px solid #ddd;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .menu ul li:hover {
+            background: #e0e0e0;
+        }
+
+        /* Social Media Icons (Inside Side Menu) */
+        
+
+
+
+.social-icons {
+    display: flex !important;    
+    justify-content: center;
+    gap: 15px;
+    padding: 10px 0;
+    border-top: 1px solid #ddd;
+    visibility: visible;
+    z-index: 1000;
+}
+
+.social-icons img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid #000;
+    background: #fff;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.social-icons img:hover {
+    transform: scale(1.2);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.notification-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px 0;
+}
+
+.notification-icon img {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.notification-icon img:hover {
+    transform: scale(1.1);
+}
+
+
+.social-icons img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid #000;
+    background: #fff;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.social-icons img:hover {
+    transform: scale(1.2);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+
+
+
+        
+.social-icons img {
+    width: 40px;               /* Increased size */
+    height: 40px;
+    border-radius: 50%;        /* Rounded shape */
+    cursor: pointer;
+    border: 2px solid #000;    /* Thicker border */
+    background: #fff;
+    transition: transform 0.3s, box-shadow 0.3s;  /* Smooth transition */
+}
+
+/* Hover Effect */
+.social-icons img:hover {
+    transform: scale(1.2);      /* Enlarges on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);  /* Shadow effect */
+    border-color: #007BFF;      /* Blue border on hover */
+}
+
+        
+.content {
+    display: none;
+    padding: 20px;
+    max-height: 80vh; /* Limit the content height */
+    overflow-y: auto; /* Enable scrolling within content */
+}
+
+
+        .active-content {
+            display: block;
+        }
+    
+.bottom-container {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 50px;
+    z-index: 1000;
+}
+
+.left-box {
+    width: 150px;                  /* Shorter box on the left */
+    background-color: black;       /* Black background */
+    color: white;                  /* White text color */
+    font-weight: bold;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid green;       /* Green stroke */
+}
+
+.right-box {
+    flex: 1;                       /* Take remaining space */
+    background-color: blue;        /* Blue background */
+    overflow: hidden;
+    position: relative;
+    border: 2px solid black;       /* Black stroke */
+}
+
+.scrolling-text {
+    position: absolute;
+    white-space: nowrap;
+    color: white;                  /* White text */
+    font-weight: bold;
+    font-size: 16px;
+    animation: scroll-left 10s linear infinite;  /* Continuous scrolling */
+}
+
+@keyframes scroll-left {
+    from {
+        right: -100%;              /* Start off-screen from the right */
+    }
+    to {
+        right: 100%;               /* Scroll towards the left */
+    }
+}
+
+
+.home-rows {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;               /* 10px gap between rows */
+    margin-top: 20px;        /* Space from the top */
+}
+
+.home-row {
+    background-color: #ffffff;       /* White background for clear visibility */
+    padding: 20px;                   /* Padding for better spacing */
+    border: 2px solid #000000;       /* Black border for visibility */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);  /* Shadow for 3D effect */
+    font-weight: bold;
+    text-align: center;
+    border-radius: 8px;              /* Rounded corners */
+    transition: transform 0.3s, background-color 0.3s, color 0.3s;  /* Smooth transitions */
+    cursor: pointer;
+}
+
+/* Active row styles when clicked */
+.home-row.active {
+    background-color: blue;          /* Blue background */
+    color: white;                    /* White text */
+    transform: scale(1.1);           /* Zoom effect */
+}
+
+
+.menu ul li {
+    padding: 15px;
+    font-size: 18px;
+    border-bottom: 1px solid #ddd;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s, color 0.3s;  /* Smooth transitions */
+}
+
+.menu ul li:hover,
+.menu ul li.active {         /* Active class for tapped items */
+    background-color: blue;  /* Blue background */
+    color: white;            /* White text */
+    transform: scale(1.1);   /* Zoom effect */
+}
+
+
+.old-papers-title {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.card-slider-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.card-slider {
+    display: flex;
+    gap: 15px;
+    overflow-x: auto;
+    padding: 10px;
+    scroll-snap-type: x mandatory;
+    justify-content: center; /* Centering the slider */
+    width: 90%;
+}
+
+.profile-card {
+    min-width: 200px;
+    height: 250px;
+    background: rgba(0, 0, 255, 0.3);
+    border: 2px solid #000;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    color: white;
+    scroll-snap-align: start;
+    transition: transform 0.3s;
+    cursor: pointer;
+}
+
+.profile-card:hover {
+    transform: scale(1.1);
+}
+
+/* Pagination bullets */
+.pagination {
+    display: flex;
+    gap: 8px;
+}
+
+.bullet {
+    width: 12px;
+    height: 12px;
+    background-color: #ccc;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.bullet.active,
+.bullet:hover {
+    background-color: blue;
+}
+
+</style> 
+ </head> 
+ <body> <!-- Overlay for Clicking Outside to Close Menu --> 
+  <div id="menuOverlay" class="menu-overlay"></div> <!-- Website Logo with Upload Option (Left Top Corner) --> 
+  <div class="logo-container"> 
+   <input type="file" id="uploadLogo" accept="image/*" hidden> 
+   <img src="default-logo.png" id="websiteLogo" class="website-logo" onclick="document.getElementById('uploadLogo').click();"> 
+  </div> <!-- Menu Button (Right Side) --> 
+  <div id="menuButton" class="menu-button" onclick="toggleMenu()"> 
+   <div class="bar"></div> 
+   <div class="bar"></div> 
+   <div class="bar"></div> 
+  </div> <!-- Sidebar Menu (Right Side) --> 
+  <div id="menu" class="menu"> 
+   <ul> 
+    
+<div class="notification-icon" id="notificationIcon">
+    <img src="https://via.placeholder.com/30?text=🔔" alt="Notification Icon">
+</div>
+
+<li onclick="showPage('home')">Home</li> 
+    <li onclick="showPage('account')">My Account</li> 
+    <li onclick="showPage('oldPapers')">Old Papers</li> 
+    <li onclick="showPage('studyMaterial')">Study Material</li> 
+    <li onclick="showPage('aboutUs')">About Us</li>
+
+<div class="social-icons" id="menuSocialIcons">
+    <img src="https://via.placeholder.com/40?text=FB" id="fbIcon" alt="FB Icon">
+    <img src="https://via.placeholder.com/40?text=G" id="googleIcon" alt="Google Icon">
+    <img src="https://via.placeholder.com/40?text=IN" id="linkedinIcon" alt="LinkedIn Icon">
+    <img src="https://via.placeholder.com/40?text=YT" id="youtubeIcon" alt="YouTube Icon">
+</div>
+ 
+   </ul> <!-- Social Media Icons Inside Menu --> 
+   
+<input type="file" id="uploadFbIcon" accept="image/*" hidden>
+<input type="file" id="uploadGoogleIcon" accept="image/*" hidden>
+<input type="file" id="uploadLinkedinIcon" accept="image/*" hidden>
+<input type="file" id="uploadYoutubeIcon" accept="image/*" hidden>
+
+<div class="social-icons"> 
+    <img src="default-fb.png" id="fbIcon"> 
+    <img src="default-google.png" id="googleIcon"> 
+    <img src="default-linkedin.png" id="linkedinIcon"> 
+    <img src="default-youtube.png" id="youtubeIcon"> 
+   </div> 
+  </div> <!-- Content Sections --> 
+  <div id="home" class="content active-content"> 
+   <h1>Welcome to Our Website</h1> 
+   <p>Click on the menu to navigate.</p> 
+  </div> 
+  <div id="account" class="content"> 
+   <h1>My Account</h1> 
+   <p>Account details go here.</p>
+
+<div class="home-rows">
+    <div class="home-row">Row 1</div>
+    <div class="home-row">Row 2</div>
+    <div class="home-row">Row 3</div>
+    <div class="home-row">Row 4</div>
+</div>
+ 
+  </div> 
+  <div id="oldPapers" class="content">
+
+<h2 class="old-papers-title">Old Papers</h2>
+<div class="card-slider-wrapper">
+    <div class="card-slider">
+        <div class="profile-card">Profile 1</div>
+        <div class="profile-card">Profile 2</div>
+        <div class="profile-card">Profile 3</div>
+        <div class="profile-card">Profile 4</div>
+        <div class="profile-card">Profile 5</div>
+        <div class="profile-card">Profile 6</div>
+    </div>
+    <div class="pagination">
+        <span class="bullet active"></span>
+        <span class="bullet"></span>
+        <span class="bullet"></span>
+    </div>
+</div>
+ 
+   <h1>Old Papers</h1> 
+   <p>Old papers content.</p> 
+  </div> 
+  <div id="studyMaterial" class="content"> 
+   <h1>Study Material</h1> 
+   <p>Study material content.</p> 
+  </div> 
+  <div id="aboutUs" class="content"> 
+   <h1>About Us</h1> 
+   <p>Information about us.</p> 
+  </div> 
+  <script>
+        // Menu Button Toggle (3 Lines → X)
+        function toggleMenu() {
+            let menu = document.getElementById("menu");
+            let menuButton = document.getElementById("menuButton");
+            let menuOverlay = document.getElementById("menuOverlay");
+
+            menu.classList.toggle("active");
+            menuButton.classList.toggle("active");
+
+            // Show or Hide Overlay
+            if (menu.classList.contains("active")) {
+                menuOverlay.style.display = "block";
+            } else {
+                menuOverlay.style.display = "none";
+            }
+        }
+
+        // Close Menu When Clicking Outside
+        document.getElementById("menuOverlay").addEventListener("click", function () {
+            document.getElementById("menu").classList.remove("active");
+            document.getElementById("menuButton").classList.remove("active");
+            document.getElementById("menuOverlay").style.display = "none";
+        });
+
+        // Website Logo Upload
+        document.getElementById("uploadLogo").addEventListener("change", function (event) {
+            let reader = new FileReader();
+            reader.onload = function () {
+                document.getElementById("websiteLogo").src = reader.result;
+            };
+            reader.readAsDataURL(event.target.files[0]);
+        });
+
+        // Show Page Content Without Reload
+        function showPage(pageId) {
+            document.querySelectorAll('.content').forEach(content => content.style.display = 'none');
+            document.getElementById(pageId).style.display = 'block';
+            toggleMenu(); // Close Menu After Clicking
+        }
+    
+// Website Logo Upload (Permanent using localStorage)
+document.getElementById("uploadLogo").addEventListener("change", function (event) {
+    let reader = new FileReader();
+    reader.onload = function () {
+        let logoData = reader.result;
+        document.getElementById("websiteLogo").src = logoData;
+        localStorage.setItem("websiteLogo", logoData);  // Save logo in localStorage
+    };
+    reader.readAsDataURL(event.target.files[0]);
+});
+
+// Load the saved logo when the page loads
+window.addEventListener("load", function () {
+    let savedLogo = localStorage.getItem("websiteLogo");
+    if (savedLogo) {
+        document.getElementById("websiteLogo").src = savedLogo;
+    }
+});
+
+
+// Function to handle icon upload and permanent save
+function handleIconUpload(inputId, iconId, storageKey) {
+    document.getElementById(inputId).addEventListener("change", function (event) {
+        let reader = new FileReader();
+        reader.onload = function () {
+            let iconData = reader.result;
+            document.getElementById(iconId).src = iconData;
+            localStorage.setItem(storageKey, iconData);  // Save icon in localStorage
+        };
+        reader.readAsDataURL(event.target.files[0]);
+    });
+}
+
+// Apply to all social media icons
+handleIconUpload("uploadFbIcon", "fbIcon", "fbIcon");
+handleIconUpload("uploadGoogleIcon", "googleIcon", "googleIcon");
+handleIconUpload("uploadLinkedinIcon", "linkedinIcon", "linkedinIcon");
+handleIconUpload("uploadYoutubeIcon", "youtubeIcon", "youtubeIcon");
+
+// Load saved icons when the page loads
+window.addEventListener("load", function () {
+    ["fbIcon", "googleIcon", "linkedinIcon", "youtubeIcon"].forEach(function(iconId) {
+        let savedIcon = localStorage.getItem(iconId);
+        if (savedIcon) {
+            document.getElementById(iconId).src = savedIcon;
+        }
+    });
+});
+
+document.getElementById("fbIcon").addEventListener("click", function() {
+    document.getElementById("uploadFbIcon").click();
+});
+document.getElementById("googleIcon").addEventListener("click", function() {
+    document.getElementById("uploadGoogleIcon").click();
+});
+document.getElementById("linkedinIcon").addEventListener("click", function() {
+    document.getElementById("uploadLinkedinIcon").click();
+});
+document.getElementById("youtubeIcon").addEventListener("click", function() {
+    document.getElementById("uploadYoutubeIcon").click();
+});
+
+
+// Notification Icon Upload (Permanent using localStorage)
+document.getElementById("notificationIcon").addEventListener("click", function () {
+    let uploadInput = document.createElement("input");
+    uploadInput.type = "file";
+    uploadInput.accept = "image/*";
+    uploadInput.click();
+
+    uploadInput.addEventListener("change", function (event) {
+        let reader = new FileReader();
+        reader.onload = function () {
+            let iconData = reader.result;
+            document.querySelector("#notificationIcon img").src = iconData;
+            localStorage.setItem("notificationIcon", iconData);  // Save icon in localStorage
+        };
+        reader.readAsDataURL(event.target.files[0]);
+    });
+});
+
+// Load the saved notification icon when the page loads
+window.addEventListener("load", function () {
+    let savedNotificationIcon = localStorage.getItem("notificationIcon");
+    if (savedNotificationIcon) {
+        document.querySelector("#notificationIcon img").src = savedNotificationIcon;
+    }
+});
+
+
+document.querySelectorAll('.home-row').forEach(function(row) {
+    row.addEventListener('click', function() {
+        document.querySelectorAll('.home-row').forEach(r => r.classList.remove('active'));
+        this.classList.add('active');
+    });
+});
+
+
+document.querySelectorAll('.menu ul li').forEach(function(item) {
+    item.addEventListener('click', function() {
+        // Remove active class from all items
+        document.querySelectorAll('.menu ul li').forEach(i => i.classList.remove('active'));
+        // Add active class to the clicked item
+        this.classList.add('active');
+    });
+});
+
+
+const bullets = document.querySelectorAll('.bullet');
+const slider = document.querySelector('.card-slider');
+
+bullets.forEach((bullet, index) => {
+    bullet.addEventListener('click', () => {
+        slider.scrollTo({
+            left: index * slider.clientWidth,
+            behavior: 'smooth'
+        });
+
+        bullets.forEach(b => b.classList.remove('active'));
+        bullet.classList.add('active');
+    });
+});
+
+// Active bullet update on scroll
+slider.addEventListener('scroll', () => {
+    const index = Math.round(slider.scrollLeft / slider.clientWidth);
+    bullets.forEach(b => b.classList.remove('active'));
+    if (bullets[index]) {
+        bullets[index].classList.add('active');
+    }
+});
+
+</script> 
+ 
+
+<div class="bottom-container">
+    <div class="left-box">UPDATES</div>
+    <div class="right-box">
+        <div class="scrolling-text">This is the scrolling text moving from right to left.</div>
+    </div>
+</div>
+
+</body></html>
